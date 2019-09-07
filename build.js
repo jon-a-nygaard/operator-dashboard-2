@@ -1,3 +1,14 @@
+/*******************************************************************************
+ *
+ * operator-dashboard
+ *
+ * Copyright (c) 2019 Jon Arild Nygård
+ * All rights reserved.
+ *
+ * For license information, see bundled LICENSE file.
+ *
+ ******************************************************************************/
+
 import Handlebars from "handlebars";
 import {
   mkdirSync,
