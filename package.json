@@ -1,0 +1,24 @@
+{
+  "name": "operator-dashboard",
+  "version": "1.0.0",
+  "description": "A learning project to visualize data in a dashboard application for operators",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jon-a-nygaard/operator-dashboard.git"
+  },
+  "keywords": [
+    "dashboard",
+    "visualization",
+    "operator"
+  ],
+  "author": "Jon Arild Nygård",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jon-a-nygaard/operator-dashboard/issues"
+  },
+  "homepage": "https://github.com/jon-a-nygaard/operator-dashboard#readme"
+}
