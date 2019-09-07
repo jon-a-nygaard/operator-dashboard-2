@@ -10,44 +10,21 @@
  ******************************************************************************/
 
 import Handlebars from "handlebars";
-import {
-  mkdirSync,
-  readdirSync,
-  readFileSync,
-  writeFileSync,
-  statSync
-} from "fs";
-import { join, sep, resolve } from "path";
 import Underscore from "underscore";
-const { each, filter, reduce } = Underscore;
+import {
+  getFileContent,
+  getFilenamesInFolder,
+  getJSONFileContent,
+  writeFile
+} from "../fs.js";
+import { join } from "path";
+
+const { each, filter } = Underscore;
 
 const isHandlebarsFile = filename => filename.endsWith(".handlebars");
 
-const getFilenamesInFolder = path => readdirSync(path);
 const getHandlebarsFilesInFolder = path =>
   filter(getFilenamesInFolder(path), isHandlebarsFile);
-const getFileContent = path => readFileSync(path, "utf-8");
-const pathExists = path => {
-  try {
-    statSync(path);
-    return true;
-  } catch (e) {
-    return false;
-  }
-};
-
-const createFolders = path =>
-  reduce(
-    resolve(path).split(sep),
-    (partialPath, folder, _, list) => {
-      const folderPath = partialPath ? join(partialPath, folder) : folder;
-      if (!pathExists(folderPath)) {
-        mkdirSync(folderPath);
-      }
-      return folderPath;
-    },
-    ""
-  );
 
 const addPartialsFromFolder = path => {
   const partials = getHandlebarsFilesInFolder(path);
@@ -65,13 +42,10 @@ const compileHandlebarsFile = (filename, inputFolder, outputFolder) => {
     outputFolder,
     filename.replace(".handlebars", ".html")
   );
-  const template = readFileSync(filepath, "utf-8");
-  const context = JSON.parse(
-    readFileSync(filepath.replace(".handlebars", ".json"))
-  );
+  const template = getFileContent(filepath, "utf-8");
+  const context = getJSONFileContent(filepath.replace(".handlebars", ".json"));
   const html = Handlebars.compile(template)(context);
-  createFolders(outputFolder);
-  writeFileSync(outputPath, html);
+  writeFile(outputPath, html);
 };
 
 const compileHandlebarsFilesInFolder = (inputFolder, outputFolder) =>
