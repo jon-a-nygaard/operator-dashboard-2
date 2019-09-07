@@ -5,7 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "node --experimental-modules build.js",
+    "build": "npm run lint && npm run format && npm run build:handlebars",
+    "build:handlebars": "node --experimental-modules build.js",
+    "lint": "eslint *.js --fix",
+    "format": "prettier *.js *.json --write",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,5 +29,10 @@
   "dependencies": {
     "handlebars": "^4.2.0",
     "underscore": "^1.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.2.0",
+    "prettier": "^1.18.2"
   }
 }
