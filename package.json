@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A learning project to visualize data in a dashboard application for operators",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "build": "node --experimental-modules build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +24,7 @@
   },
   "homepage": "https://github.com/jon-a-nygaard/operator-dashboard#readme",
   "dependencies": {
+    "handlebars": "^4.2.0",
     "underscore": "^1.9.1"
   }
 }
