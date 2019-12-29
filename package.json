@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/jon-a-nygaard/operator-dashboard#readme",
   "dependencies": {
-    "handlebars": "^4.2.0",
+    "handlebars": "^4.3.0",
     "underscore": "^1.9.1"
   },
   "devDependencies": {
